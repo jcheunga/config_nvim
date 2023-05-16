@@ -1,3 +1,4 @@
+-- REMEMBER TO RUN :so BEFORE :PackerSync
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
@@ -29,6 +30,11 @@ return require('packer').startup(function(use)
 
   use("nvim-tree/nvim-tree.lua")
 
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+
   use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
   use("nvim-treesitter/playground")
   use("theprimeagen/harpoon")
@@ -48,6 +54,7 @@ return require('packer').startup(function(use)
   use("nvim-lua/plenary.nvim")
   use("nvim-pack/nvim-spectre")
   use('nvim-tree/nvim-web-devicons')
+  use('slim-template/vim-slim')
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
