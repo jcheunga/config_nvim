@@ -28,7 +28,16 @@ return require('packer').startup(function(use)
       end
   })
 
-  use("nvim-tree/nvim-tree.lua")
+  -- use("nvim-tree/nvim-tree.lua")
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    }
+  }
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -41,20 +50,40 @@ return require('packer').startup(function(use)
   use("theprimeagen/refactoring.nvim")
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
-  use("airblade/vim-gitgutter")
+  use("lewis6991/gitsigns.nvim")
   use("tpope/vim-commentary")
   use("nvim-treesitter/nvim-treesitter-context");
-  use("rmagatti/auto-session")
   use("lukas-reineke/indent-blankline.nvim")
   use("johnfrankmorgan/whitespace.nvim")
 
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
+  -- use('sbdchd/neoformat')
 
   use("nvim-lua/plenary.nvim")
   use("nvim-pack/nvim-spectre")
   use('nvim-tree/nvim-web-devicons')
   use('slim-template/vim-slim')
+
+  -- golang
+  use 'ray-x/go.nvim'
+  use 'ray-x/guihua.lua' -- recommended if need floating window support
+
+  use {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+      }
+    end
+  }
+  use {
+    'm42e/lgh.nvim',
+    requires = {
+        "nvim-telescope/telescope.nvim",
+    },
+  }
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -83,6 +112,16 @@ return require('packer').startup(function(use)
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
+  use("tpope/vim-rails")
 
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use {
+    "windwp/nvim-ts-autotag",
+    config = function() require("nvim-ts-autotag").setup {} end
+  }
 end)
 
