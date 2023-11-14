@@ -14,7 +14,7 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use {'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end }
+  use { "ellisonleao/gruvbox.nvim" }
 
   use({
       "folke/trouble.nvim",
@@ -28,7 +28,20 @@ return require('packer').startup(function(use)
       end
   })
 
-  -- use("nvim-tree/nvim-tree.lua")
+  use {
+    "folke/which-key.nvim",
+
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -43,41 +56,54 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
+  use("edkolev/tmuxline.vim")
 
-  use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
+  use("nvim-treesitter/nvim-treesitter")
   use("nvim-treesitter/playground")
-  use("theprimeagen/harpoon")
-  use("theprimeagen/refactoring.nvim")
+  use("nvim-treesitter/nvim-treesitter-context");
+
+  -- use("theprimeagen/harpoon")
   use("mbbill/undotree")
+
   use("tpope/vim-fugitive")
   use("lewis6991/gitsigns.nvim")
+  use("rhysd/git-messenger.vim")
+
   use("tpope/vim-commentary")
-  use("nvim-treesitter/nvim-treesitter-context");
+
   use("lukas-reineke/indent-blankline.nvim")
   use("johnfrankmorgan/whitespace.nvim")
 
-  use('jose-elias-alvarez/null-ls.nvim')
-  use('MunifTanjim/prettier.nvim')
-  -- use('sbdchd/neoformat')
+  -- use('jose-elias-alvarez/null-ls.nvim')
+  -- use('MunifTanjim/prettier.nvim')
+  use('sbdchd/neoformat')
 
   use("nvim-lua/plenary.nvim")
   use("nvim-pack/nvim-spectre")
   use('nvim-tree/nvim-web-devicons')
+
   use('slim-template/vim-slim')
+  use('Exafunction/codeium.vim')
+  -- use("github/copilot.vim")
 
   -- golang
   use 'ray-x/go.nvim'
   use 'ray-x/guihua.lua' -- recommended if need floating window support
 
+  -- use {
+  --   'rmagatti/auto-session',
+  --   config = function()
+  --     require("auto-session").setup {
+  --       log_level = "error",
+  --       auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+  --     }
+  --   end
+  -- }
   use {
-    'rmagatti/auto-session',
-    config = function()
-      require("auto-session").setup {
-        log_level = "error",
-        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
-      }
-    end
+    'jedrzejboczar/possession.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
   }
+
   use {
     'm42e/lgh.nvim',
     requires = {
@@ -108,20 +134,16 @@ return require('packer').startup(function(use)
 	  }
   }
 
-  use("folke/zen-mode.nvim")
-  use("github/copilot.vim")
-  use("eandrju/cellular-automaton.nvim")
-  use("laytan/cloak.nvim")
-  use("tpope/vim-rails")
-
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
 
-  use {
-    "windwp/nvim-ts-autotag",
-    config = function() require("nvim-ts-autotag").setup {} end
-  }
+  -- use {
+  --   "windwp/nvim-ts-autotag",
+  --   config = function() require("nvim-ts-autotag").setup {} end
+  -- }
+
+ use("ggandor/leap.nvim")
 end)
 

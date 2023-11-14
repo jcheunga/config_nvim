@@ -6,6 +6,13 @@ lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
   'gopls',
+  'cssls',
+  -- 'cssmodules_ls',
+})
+
+lsp.skip_server_setup({
+  -- 'cssmodules_ls',
+  'cssls'
 })
 
 -- Fix Undefined global 'vim'
