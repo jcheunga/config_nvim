@@ -28,9 +28,10 @@ autocmd({"BufWritePre"}, {
   command = [[%s/\s\+$//e]],
 })
 
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
+-- vim.g.netrw_browse_split = 0
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_winsize = 25
+-- vim.g.skip_ts_context_commentstring_module = true
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 -- vim.g.loaded_netrw = 1
